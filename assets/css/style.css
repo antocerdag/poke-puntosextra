@@ -1,7 +1,7 @@
 .caja{
 	background-color: #FFCC66;
 	color: black;
-	height: 600px;
+	height: 680px;
 }
 .titulo{
 	margin-bottom: 10px;
@@ -10,10 +10,11 @@
     background-color: whitesmoke;
     border-radius: 9px;
     width: 100%;
-    height: 143px;
+	height: 159px;
     display: inline-block;
     margin-left: 26%;
     margin-top: 11px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .pokeimg{
