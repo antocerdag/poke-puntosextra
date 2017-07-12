@@ -26,6 +26,27 @@ respuesta.results.forEach(
 console.log("Este es el mensaje después de la llamada de ajax");
 
 */
+var habilidades = function(url){
+	$.ajax({
+		url: url,
+		type: 'GET',
+		dataType: 'json',
+		data: {limit:15},
+		
+	})
+	.done(function(respuesta) {
+		
+		$(".habilidades").append(respuesta);
+		console.log(respuesta);
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+}
+
 
 $.ajax({
 	url: 'http://pokeapi.co/api/v2/pokemon',
@@ -35,11 +56,13 @@ $.ajax({
 })
 .done(function(respuesta) {
 	respuesta.results.forEach(function(el,img){
-		var pokeName = el.name;
-	  var img = img + 1;
-	  var habilidades = el.url.ability.abilities.name;
-		$(".caja-pokemon").append("<a class='waves-effect waves-light btn boton'><div class='pokelinea1'><img class='pokeimg' src='http://pokeapi.co/media/img/"+img+ ".png'><span class='namePoke text-center'>"+pokeName+"</span>"+"<span class='habilidades'>"+habilidades+"</span></div> </a>");
+	var pokeName = el.name;
+	var img = img + 1;
+	habilidades(el.url);
+	$(".caja-pokemon").append("<a class='waves-effect waves-light btn boton'><div class='pokelinea1'><img class='pokeimg' src='http://pokeapi.co/media/img/"+img+ ".png'><span class='namePoke text-center'>"+pokeName+"</span>"+"<span class='habilidades'>"+"</span></div> </a>");
 	})
+
+	
 })
 .fail(function() {
 	console.log("error");
@@ -47,3 +70,5 @@ $.ajax({
 .always(function() {
 	console.log("complete");
 });
+
+
